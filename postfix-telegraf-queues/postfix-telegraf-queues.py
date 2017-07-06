@@ -11,13 +11,13 @@ import time
 from os.path import getsize
 
 def get_queue_directory():
-    '''Gather information from postfix'''
+    '''Gather information from Postfix'''
     result = subprocess.check_output(['postconf', '-h', 'queue_directory'])
     result = result.strip()
     if os.path.isfile(result):
-        return "/var/spool/postfix"
-    else:
         return result
+    else:
+        return "/var/spool/postfix"
 
 def scan_directory(directory, qdir):
     '''Get information about directory'''
